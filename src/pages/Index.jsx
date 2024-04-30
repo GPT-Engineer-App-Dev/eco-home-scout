@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box, Flex, Heading, Text, Button, Input, useColorModeValue } from '@chakra-ui/react';
 import { FaSearch, FaUserPlus, FaSignInAlt } from 'react-icons/fa';
 
