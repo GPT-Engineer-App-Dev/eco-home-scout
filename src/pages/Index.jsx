@@ -1,15 +1,18 @@
 import React from 'react';
-import { Box, Flex, Heading, Text, Button, Input, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text, Button, Input, useColorModeValue, Select, Checkbox } from '@chakra-ui/react';
 import { FaSearch, FaUserPlus, FaSignInAlt } from 'react-icons/fa';
 
 const Index = () => {
   const bg = useColorModeValue('gray.50', 'gray.800');
   const [searchQuery, setSearchQuery] = React.useState('');
   const color = useColorModeValue('gray.800', 'white');
+  const [priceRange, setPriceRange] = React.useState('');
+  const [homeType, setHomeType] = React.useState('');
+  const [ecoFriendly, setEcoFriendly] = React.useState(false);
 
   const handleSearch = () => {
-    console.log('Searching for:', searchQuery);
-    // Implement search logic here
+    console.log('Searching for:', searchQuery, priceRange, homeType, ecoFriendly);
+    // Further implementation of search logic based on these filters should be done here.
   };
 
   return (
@@ -26,6 +29,13 @@ const Index = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <Button leftIcon={<FaSearch />} colorScheme="blue" onClick={handleSearch}>Search</Button>
+          <Input placeholder="Price range (e.g., 100000-500000)" value={priceRange} onChange={(e) => setPriceRange(e.target.value)} />
+          <Select placeholder="Select type of home" value={homeType} onChange={(e) => setHomeType(e.target.value)}>
+            <option value="apartment">Apartment</option>
+            <option value="house">House</option>
+            <option value="villa">Villa</option>
+          </Select>
+          <Checkbox isChecked={ecoFriendly} onChange={(e) => setEcoFriendly(e.target.checked)}>Eco-friendly renovations potential</Checkbox>
         </Flex>
         <Flex gap={2}>
           <Button leftIcon={<FaUserPlus />} colorScheme="teal">Sign Up</Button>
